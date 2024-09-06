@@ -3,12 +3,12 @@ const btn=document.querySelectorAll("#btn");
 
 
 btn.forEach(box => box.addEventListener('click', () => {
-    humanChoice=box.textContent
-    const computerChoice=getComputerChoice();
-    console.log('computer choice is : '+computerChoice);
+    const humanSelection=box.textContent
+    const computerSelection=getComputerChoice();
+    console.log('computer choice is : '+computerSelection);
 
-    playRound(computerChoice,humanChoice);
-    console.log('human choice is :'+humanChoice);
+    playRound(computerSelection,humanSelection);
+    console.log('human choice is : '+humanSelection);
 }
     
      
