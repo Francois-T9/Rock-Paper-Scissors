@@ -1,8 +1,13 @@
 const btn=document.querySelectorAll("#btn");
-const container=document.querySelector("#container");
+// const container=document.querySelector("#container");
+
+const humanScoreContainer=document.querySelector("#humanScore");
+const computerScoreContainer=document.querySelector("#computerScore");
+
+const winnerMessage=document.querySelector(".winner")
 
 // const text_div=document.querySelector("#result");
-const text=document.createElement("div");
+// const text=document.createElement("div");
 
 
 
@@ -30,28 +35,42 @@ let computerScore=0;
 function playRound(computerChoice,humanChoice) {
         console.log(humanScore);
         console.log(computerScore);
-        if(humanScore<5 && computerScore<5) {
+        if(humanScore<=4 && computerScore<=4) {
 
-            if((computerChoice==="rock" && humanChoice==="scissors") || (computerChoice==="paper" && humanChoice==="rock") || (computerChoice==="scissors" && humanChoice==="paper") ) {
+            if((computerChoice==="Rock" && humanChoice==="Scissors") || (computerChoice==="Paper" && humanChoice==="Rock") || (computerChoice==="Scissors" && humanChoice==="Paper") ) {
                 
                 // console.log("the human score is : ",humanScore,"\n and the computer score is : ",computerScore);
-                text.textContent="the human score is : "+humanScore+"\n and the computer score is : "+computerScore;
-                container.appendChild(text);
+                // text.textContent="the human score is : "+humanScore+"\n and the computer score is : "+computerScore;
+                // container.appendChild(text);
+                
                 ++computerScore;
+                computerScoreContainer.textContent=computerScore;
+                text="Computer won the round ";
+                
+                winnerMessage.textContent=text;
                 
                 return(humanScore);
             }
     
-            else if ( (humanChoice==="rock" && computerChoice==="scissors") || (humanChoice==="paper" && computerChoice==="rock") || (humanChoice==="scissors" && computerChoice==="paper") ) {
+            else if ( (humanChoice==="Rock" && computerChoice==="Scissors") || (humanChoice==="Paper" && computerChoice==="Rock") || (humanChoice==="Scissors" && computerChoice==="Paper") ) {
                 
                 // console.log("the human score is : ",humanScore,"\nand the computer score is : ",computerScore);
-                text.textContent="the human score is :\n "+humanScore+"\n and the computer score is : "+computerScore;
-                container.appendChild(text);
+                // text.textContent="the human score is :\n "+humanScore+"\n and the computer score is : "+computerScore;
+                // container.appendChild(text);
                 ++humanScore;
+                humanScoreContainer.textContent=humanScore;
+                text="You won the round! ";
+                
+                winnerMessage.textContent=text;
+                
                 return(humanScore);
                 
             }
             else {
+                
+                text="I'ts a draw! Play again ";
+                
+                winnerMessage.textContent=text;
                 humanScore;
                 computerScore;
     
@@ -59,13 +78,15 @@ function playRound(computerChoice,humanChoice) {
         }
         else {
             if(computerScore===5) {
-                text.textContent="computer won "+computerScore+" vs "+humanScore;
-                container.appendChild(text);
+                text="Computer won ";
+                // container.appendChild(text);
+                winnerMessage.textContent=text;
             }
             
             else {
-                text.textContent="human won "+humanScore+" vs "+computerScore;
-                container.appendChild(text);
+                text="You won";
+                // container.appendChild(text);
+                winnerMessage.textContent=text;
         }
             }
             
@@ -83,13 +104,13 @@ function playRound(computerChoice,humanChoice) {
 function getComputerChoice() {
     num=Math.random();
     if (num<0.33) {
-        return("rock")
+        return("Rock")
     }
     else if (num>0.33 && num <0.66) {
-        return("paper")
+        return("Paper")
     }
 
     else {
-        return("scissors")
+        return("Scissors")
     }
 }
