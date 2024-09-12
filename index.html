@@ -5,15 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     
-    <button id="btn">rock</button>
-    <button id="btn">paper</button>
-    <button id="btn">scissors</button>
+    <div class="container">
+
+        <div class="winner"></div>
+        <div class="display">
+
+            
+            <div class="human">
+                <p>Human score</p>
+                <div id="humanScore"></div>
+                
+            </div>
+
+            <div class="computer">
+                <p>Computer score</p>
+                <div id="computerScore"></div>
+                
+            </div>
+
+        </div>
+        <div class="buttons">
+            <button id="btn">Rock</button>
+            <button id="btn">Paper</button>
+            <button id="btn">Scissors</button>
+        </div>
+        
+    </div>
     
 
-    <div id="container"></div>
+    
     <script src="script.js"></script>
     
     
