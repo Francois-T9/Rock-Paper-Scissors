@@ -1,18 +1,55 @@
 const btn=document.querySelectorAll("#btn");
 // const container=document.querySelector("#container");
 
+const emojiWin=document.getElementById('image-win');
+emojiWin.style.display='none';
+
+const emojiLost=document.getElementById('image-lost');
+emojiLost.style.display='none';
+
+const gameWin=document.getElementById('game-win');
+gameWin.style.display='none';
+
+const gameDraw=document.getElementById('game-draw');
+gameDraw.style.display='none';
+
+
+const imageContainer=document.getElementById('image-container');
+
 const humanScoreContainer=document.querySelector("#humanScore");
 const computerScoreContainer=document.querySelector("#computerScore");
 
 const winnerMessage=document.querySelector(".winner")
 
+const replayBtn=document.querySelector("#replayBtn");
+
 // const text_div=document.querySelector("#result");
 // const text=document.createElement("div");
 
+replayBtn.addEventListener("click",() => {
+    replay(humanScore,computerScore);
+    console.log(humanScore);
+    console.log(computerScore);
 
 
+}
+
+)
 
 
+replay=() => {
+    humanScore=0;
+    computerScore=0;
+    computerScoreContainer.textContent=computerScore;
+    humanScoreContainer.textContent=humanScore;
+    winnerMessage.textContent="";
+    emojiLost.style.display='none';
+    emojiWin.style.display='none';
+    gameWin.style.display='none';
+    imageContainer.style.display='';
+    gameDraw.style.display='none';
+
+}
 
 btn.forEach(box => box.addEventListener('click', () => {
     const humanSelection=box.textContent
@@ -46,7 +83,11 @@ function playRound(computerChoice,humanChoice) {
                 ++computerScore;
                 computerScoreContainer.textContent=computerScore;
                 text="Computer won the round ";
-                
+                emojiLost.style.display='';
+                imageContainer.style.display='none';
+                gameDraw.style.display='none';
+
+                emojiWin.style.display='none';
                 winnerMessage.textContent=text;
                 
                 return(humanScore);
@@ -60,16 +101,22 @@ function playRound(computerChoice,humanChoice) {
                 ++humanScore;
                 humanScoreContainer.textContent=humanScore;
                 text="You won the round! ";
-                
+                gameDraw.style.display='none';
+
                 winnerMessage.textContent=text;
-                
+                emojiWin.style.display='';
+                emojiLost.style.display='none';
+                imageContainer.style.display='none';
                 return(humanScore);
                 
             }
             else {
                 
                 text="I'ts a draw! Play again ";
-                
+                emojiWin.style.display='none';
+                gameDraw.style.display='';
+                emojiLost.style.display='none';
+                imageContainer.style.display='none';
                 winnerMessage.textContent=text;
                 humanScore;
                 computerScore;
@@ -83,9 +130,12 @@ function playRound(computerChoice,humanChoice) {
                 winnerMessage.textContent=text;
             }
             
-            else {
+            else if(humanScore===5) {
                 text="You won";
                 // container.appendChild(text);
+                gameWin.style.display='';
+                emojiLost.style.display='none';
+                emojiWin.style.display='none';
                 winnerMessage.textContent=text;
         }
             }
